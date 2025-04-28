@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* src/styles/index.css */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-grainy-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    135deg,
+    #0d0b1e,
+    #03b09c,
+    #291a86,
+    #04ce92,
+    #31829b,
+    #d22869,
+    #73082c
+  );
+  background-size: 600% 600%;
+  animation: gradientShift 30s ease infinite;
+  filter: brightness(0.95) contrast(1.2);
+  pointer-events: none;
+}
+
+.animated-grainy-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff 0.6px, transparent 0.6px);
+  background-size: 1.5px 1.5px;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
